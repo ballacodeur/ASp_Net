@@ -1,0 +1,115 @@
+﻿@model WebImmobilier.Models.MaisonViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="shadow-lg mb-4 p-3 bg-gradient rounded">
+        <h2>Création d'une nouvelle Maison</h2>
+        <div class="row">
+            <div class="form-group col-md-12">
+                @Html.LabelFor(model => model.DescriptionBien, htmlAttributes: new { @class = "control-label col-md-12 text-dark" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.DescriptionBien, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DescriptionBien, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdProprio, "Propriétaire", htmlAttributes: new { @class = "control-label col-md-12 text-dark" })
+                    <div class="col-md-12">
+                        @Html.DropDownList("IdProprio", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.IdProprio, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SuperficieBien, htmlAttributes: new { @class = "control-label col-md-12 text-dark" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.SuperficieBien, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SuperficieBien, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Localite, htmlAttributes: new { @class = "control-label col-md-12 text-dark" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Localite, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Localite, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NbreSalleEau, htmlAttributes: new { @class = "control-label col-md-12 text-dark" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.NbreSalleEau, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NbreSalleEau, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NbreCuisine, htmlAttributes: new { @class = "control-label col-md-12 text-dark" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.NbreCuisine, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NbreCuisine, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NbreToilette, htmlAttributes: new { @class = "control-label col-md-12 text-dark" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.NbreToilette, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NbreToilette, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NbreChambre, htmlAttributes: new { @class = "control-label col-md-12 text-dark" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.NbreChambre, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NbreChambre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</div>
+   
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,50 @@
+﻿@model WebImmobilier.Models.Maison
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<p>Êtes vous sur de vouloir supprimer?</p>
+
+<div class="maison-details">
+    <h4>Maison Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.Proprietaire.NomUser)</dt>
+        <dd>@Html.DisplayFor(model => model.Proprietaire.NomUser)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.DescriptionBien)</dt>
+        <dd>@Html.DisplayFor(model => model.DescriptionBien)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.SuperficieBien)</dt>
+        <dd>@Html.DisplayFor(model => model.SuperficieBien)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Localite)</dt>
+        <dd>@Html.DisplayFor(model => model.Localite)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.NbreSalleEau)</dt>
+        <dd>@Html.DisplayFor(model => model.NbreSalleEau)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.NbreCuisine)</dt>
+        <dd>@Html.DisplayFor(model => model.NbreCuisine)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.NbreToilette)</dt>
+        <dd>@Html.DisplayFor(model => model.NbreToilette)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.NbreChambre)</dt>
+        <dd>@Html.DisplayFor(model => model.NbreChambre)</dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

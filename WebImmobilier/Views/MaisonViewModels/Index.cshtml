@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebImmobilier.Models.MaisonViewModel>
+
+@{
+    ViewBag.Title = "Liste des Maisons";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Liste des Maisons</h2>
+
+<p>
+    @Html.ActionLink("Nouvelle Maison", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<div class="maison-list">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    @*<img src="@item.ImageUrl" alt="Image de la maison" class="card-img-top">*@
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Proprietaire.NomUser)</h5>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.DescriptionBien)</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fas fa-expand"></i> @Html.DisplayFor(modelItem => item.SuperficieBien) m²</li>
+                            <li class="list-group-item"><i class="fas fa-map-marker-alt"></i> @Html.DisplayFor(modelItem => item.Localite)</li>
+                            <li class="list-group-item"><i class="fas fa-bed"></i> @Html.DisplayFor(modelItem => item.NbreChambre) chambre(s)</li>
+                            <li class="list-group-item"><i class="fas fa-bath"></i> @Html.DisplayFor(modelItem => item.NbreSalleEau) salle d'eau (s)</li>
+                            <li class="list-group-item"><i class="fas fa-utensils"></i> @Html.DisplayFor(modelItem => item.NbreCuisine) cuisine (s)</li>
+                            <li class="list-group-item"><i class="fas fa-toilet"></i> @Html.DisplayFor(modelItem => item.NbreToilette) toilette(s)</li>
+                        </ul>
+                        <div class="btn-group" role="group">
+                            @Html.ActionLink("Modifier", "Edit", new { id = item.IdBien }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Détails", "Details", new { id = item.IdBien }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("Supprimer", "Delete", new { id = item.IdBien }, new { @class = "btn btn-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
