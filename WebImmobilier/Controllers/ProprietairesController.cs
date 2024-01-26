@@ -7,17 +7,25 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebImmobilier.Models;
+using PagedList.Mvc;
+using PagedList;
 
 namespace WebImmobilier.Controllers
 {
     public class ProprietairesController : Controller
     {
         private bdImmobilierContext db = new bdImmobilierContext();
+        int pageSize = 1;
 
         // GET: Proprietaires
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View( db.proprietaires.ToList());
+            int pageNumber = (page ?? 1); // Si page a une valeur, utilisez-la, sinon utilisez la page 1 par défaut
+            int pageSize = 1; // Nombre d'éléments par page
+
+            var proprietairesList = db.proprietaires.ToList().ToPagedList(pageNumber, pageSize);
+
+            return View(proprietairesList);
         }
 
         // GET: Proprietaires/Details/5

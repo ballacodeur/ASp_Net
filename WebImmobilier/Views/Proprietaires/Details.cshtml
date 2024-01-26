@@ -5,47 +5,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Details Proprietaire</h2>
 
-<div>
-    <h4>Proprietaire</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NomUser)
-        </dt>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Proprietaire</h4>
+        <dl class="row">
+            <dt class="col-sm-3">Nom</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.NomUser)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NomUser)
-        </dd>
+            <dt class="col-sm-3">Prenom</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.PrenomUser)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PrenomUser)
-        </dt>
+            <dt class="col-sm-3">Login</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Login)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PrenomUser)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Login)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Login)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-    </dl>
+            <dt class="col-sm-3">Password</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Password)</dd>
+        </dl>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.IdUser }, new { @class = "btn btn-primary" }) |
+            <div class="btn btn-outline-danger m-3">
+                @Html.ActionLink("Retour à la liste", "Index")
+            </div>
+        </p>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdUser }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
