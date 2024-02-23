@@ -37,11 +37,7 @@ namespace WebImmobilier.Controllers
         }
 
         // GET: Biens/Create
-        public ActionResult Create()
-        {
-            ViewBag.IdProprio = new SelectList(db.utilisateurs, "IdUser", "NomUser");
-            return View();
-        }
+        
 
         // POST: Biens/Create
         // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 

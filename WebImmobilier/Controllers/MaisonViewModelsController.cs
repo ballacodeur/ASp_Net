@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using WebImmobilier.Models;
 
 namespace WebImmobilier.Controllers
@@ -66,10 +68,15 @@ namespace WebImmobilier.Controllers
         }
 
         // GET: MaisonViewModels
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+
+            int pageNumber = (page ?? 1); // Si page a une valeur, utilisez-la, sinon utilisez la page 1 par défaut
+            int pageSize = 3; // Nombre d'éléments par page
+
+            
             var maisonViewModels = GetMaisonViewModels();
-            return View(maisonViewModels.ToList());
+            return View(maisonViewModels.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: MaisonViewModels/Details/5

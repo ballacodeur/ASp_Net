@@ -25,11 +25,11 @@
                 <li class="list-group-item"><strong>Nombre de toilettes :</strong> @Html.DisplayFor(model => model.NbreToilette)</li>
                 <li class="list-group-item"><strong>Nombre de chambres :</strong> @Html.DisplayFor(model => model.NbreChambre)</li>
             </ul>
-            <div class="col-md-12 d-inline-block">
+            <div class="col-md-12 d-inline-block p-4">
                 <div class="form-group m-2">
                     @Html.ActionLink("Modifier", "Edit", new { id = Model.IdBien }, new { @class = "btn btn-primary" })
 
-                    @Html.ActionLink("Retour à la liste", "Index", null, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Retour à la liste", "Index", null, new { @class = "btn btn-outline-danger" })
                 </div>
             </div>
         </div>

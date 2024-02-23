@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebImmobilier.Models.MaisonViewModel>
+﻿@model PagedList.IPagedList<WebImmobilier.Models.MaisonViewModel>
 
 @{
     ViewBag.Title = "Liste des Maisons";
@@ -29,7 +29,7 @@
                             <li class="list-group-item"><i class="fas fa-utensils"></i> @Html.DisplayFor(modelItem => item.NbreCuisine) cuisine (s)</li>
                             <li class="list-group-item"><i class="fas fa-toilet"></i> @Html.DisplayFor(modelItem => item.NbreToilette) toilette(s)</li>
                         </ul>
-                        <div class="btn-group" role="group">
+                        <div class="btn-group m-4" role="group">
                             @Html.ActionLink("Modifier", "Edit", new { id = item.IdBien }, new { @class = "btn btn-primary" })
                             @Html.ActionLink("Détails", "Details", new { id = item.IdBien }, new { @class = "btn btn-info" })
                             @Html.ActionLink("Supprimer", "Delete", new { id = item.IdBien }, new { @class = "btn btn-danger" })
@@ -40,3 +40,30 @@
         }
     </div>
 </div>
+@{
+    int pageCount = Model.PageCount;
+    int currentPage = Model.PageNumber;
+    string actionUrl = Url.Action("Index", new { page = "" });
+}
+<nav>
+    <ul class="pagination pagination-circle">
+        <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", new { page = 1 })">Prem</a>
+        </li>
+        <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1 })">Préc</a>
+        </li>
+        @for (int i = 1; i <= pageCount; i++)
+        {
+            <li class="page-item @(i == currentPage ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+            </li>
+        }
+        <li class="page-item @(currentPage == pageCount ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1 })">Suiv</a>
+        </li>
+        <li class="page-item @(currentPage == pageCount ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", new { page = pageCount })">Der</a>
+        </li>
+    </ul>
+</nav>

@@ -7,44 +7,38 @@
 
 <h2>Delete</h2>
 
-<p>Êtes vous sur de vouloir supprimer?</p>
+<p class="alert alert-danger" role="alert">Êtes vous sur de vouloir supprimer?</p>
 
 <div class="maison-details">
-    <h4>Maison Details</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>@Html.DisplayNameFor(model => model.Proprietaire.NomUser)</dt>
-        <dd>@Html.DisplayFor(model => model.Proprietaire.NomUser)</dd>
-
-        <dt>@Html.DisplayNameFor(model => model.DescriptionBien)</dt>
-        <dd>@Html.DisplayFor(model => model.DescriptionBien)</dd>
-
-        <dt>@Html.DisplayNameFor(model => model.SuperficieBien)</dt>
-        <dd>@Html.DisplayFor(model => model.SuperficieBien)</dd>
-
-        <dt>@Html.DisplayNameFor(model => model.Localite)</dt>
-        <dd>@Html.DisplayFor(model => model.Localite)</dd>
-
-        <dt>@Html.DisplayNameFor(model => model.NbreSalleEau)</dt>
-        <dd>@Html.DisplayFor(model => model.NbreSalleEau)</dd>
-
-        <dt>@Html.DisplayNameFor(model => model.NbreCuisine)</dt>
-        <dd>@Html.DisplayFor(model => model.NbreCuisine)</dd>
-
-        <dt>@Html.DisplayNameFor(model => model.NbreToilette)</dt>
-        <dd>@Html.DisplayFor(model => model.NbreToilette)</dd>
-
-        <dt>@Html.DisplayNameFor(model => model.NbreChambre)</dt>
-        <dd>@Html.DisplayFor(model => model.NbreChambre)</dd>
-    </dl>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions">
-            <input type="submit" value="Delete" class="btn btn-danger" /> |
-            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/assets/images/image-maison.jpg" alt="Image de la maison" class="img-fluid" />
         </div>
-    }
+        <div class="col-md-6 shadow-lg p-4">
+            <h4>Informations sur la maison</h4>
+            <hr />
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Propriétaire :</strong> @Html.DisplayFor(model => model.Proprietaire.NomUser)</li>
+                <li class="list-group-item"><strong>Description :</strong> @Html.DisplayFor(model => model.DescriptionBien)</li>
+                <li class="list-group-item"><strong>Superficie :</strong> @Html.DisplayFor(model => model.SuperficieBien) m²</li>
+                <li class="list-group-item"><strong>Localité :</strong> @Html.DisplayFor(model => model.Localite)</li>
+                <li class="list-group-item"><strong>Nombre de salles de bain :</strong> @Html.DisplayFor(model => model.NbreSalleEau)</li>
+                <li class="list-group-item"><strong>Nombre de cuisines :</strong> @Html.DisplayFor(model => model.NbreCuisine)</li>
+                <li class="list-group-item"><strong>Nombre de toilettes :</strong> @Html.DisplayFor(model => model.NbreToilette)</li>
+                <li class="list-group-item"><strong>Nombre de chambres :</strong> @Html.DisplayFor(model => model.NbreChambre)</li>
+            </ul>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions">
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    <div class="btn btn-outline-danger m-3">
+                        @Html.ActionLink("Retour à la liste", "Index")
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>

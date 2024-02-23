@@ -21,13 +21,30 @@
             <dd class="col-sm-9">@Html.DisplayFor(model => model.Login)</dd>
 
             <dt class="col-sm-3">Password</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.Password)</dd>
+            <dd class="col-sm-9">
+                <span id="password" style="display: none">@Html.DisplayFor(model => model.Password)</span>
+                <button id="showPassword" class="btn btn-primary">Voir le mot de passe</button>
+            </dd>
         </dl>
-        <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.IdUser }, new { @class = "btn btn-primary" }) |
-            <div class="btn btn-outline-danger m-3">
-                @Html.ActionLink("Retour à la liste", "Index")
+        <div class="col-md-12 d-inline-block p-4">
+            <div class="form-group m-2">
+                @Html.ActionLink("Modifier", "Edit", new { id = Model.IdUser }, new { @class = "btn btn-primary" })
+
+                @Html.ActionLink("Retour à la liste", "Index", null, new { @class = "btn btn-outline-danger" })
             </div>
-        </p>
+        </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('showPassword').addEventListener('click', function() {
+        var password = document.getElementById('password');
+        if (password.style.display === 'none') {
+            password.style.display = 'inline';
+            this.textContent = 'Masquer le mot de passe';
+        } else {
+            password.style.display = 'none';
+            this.textContent = 'Voir le mot de passe';
+        }
+    });
+</script>

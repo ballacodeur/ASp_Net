@@ -9,7 +9,7 @@
 <h2>Les Proprietaires</h2>
 
 <p>
-    @Html.ActionLink("Nouveau Propriétaire", "Create",null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Nouveau Propriétaire", "Create", null, new { @class = "btn btn-primary" })
 </p>
 <table class="table table-striped">
     <tr class="thead-dark">
@@ -57,5 +57,39 @@
         </tr>
     }
 </table>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
- 
+
+@{
+    int pageCount = Model.PageCount;
+    int currentPage = Model.PageNumber;
+    string actionUrl = Url.Action("Index", new { page = "" });
+}
+
+<nav>
+    <ul class="pagination pagination-circle">
+        <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", new { page = 1 })">Prem</a>
+        </li>
+        <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1 })">Préc</a>
+        </li>
+        @for (int i = 1; i <= pageCount; i++)
+        {
+            <li class="page-item @(i == currentPage ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+            </li>
+        }
+        <li class="page-item @(currentPage == pageCount ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1 })">Suiv</a>
+        </li>
+        <li class="page-item @(currentPage == pageCount ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", new { page = pageCount })">Der</a>
+        </li>
+    </ul>
+</nav>
+
+@*@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast, new
+{
+    ulClassName = "pagination",
+    liClassName = "page-item",
+    aClassName = "page-link"
+})*@

@@ -15,7 +15,7 @@ namespace WebImmobilier.Controllers
     public class ProprietairesController : Controller
     {
         private bdImmobilierContext db = new bdImmobilierContext();
-        int pageSize = 1;
+        
 
         // GET: Proprietaires
         public ActionResult Index(int? page)

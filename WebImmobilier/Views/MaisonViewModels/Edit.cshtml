@@ -102,15 +102,15 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-primary" />
+                <div class="btn btn-outline-danger m-3">
+                    @Html.ActionLink("Retour à la liste", "Index")
+                </div>
             </div>
         </div>
     </div>
 </div>
         }
 
-        <div>
-            @Html.ActionLink("Retour à la liste", "Index")
-        </div>
 
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")
