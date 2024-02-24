@@ -1,6 +1,8 @@
 ﻿@model PagedList.IPagedList<WebImmobilier.Models.Proprietaire>
 @using PagedList.Mvc
 
+@using WebImmobilier.Models
+
 @{
     ViewBag.Title = "Liste des propriètaire";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,7 +11,7 @@
 <h2>Les Proprietaires</h2>
 
 <p>
-    @Html.ActionLink("Nouveau Propriétaire", "Create", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink(ResourceImmo.Nouveau ,"Create", null, new { @class = "btn btn-primary" })
 </p>
 <table class="table table-striped">
     <tr class="thead-dark">
